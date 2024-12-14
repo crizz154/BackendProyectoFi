@@ -9,10 +9,12 @@ const usuarioRoutes = require('./routes/usuarioRoutes');
 const salaRoutes = require('./routes/salaRoutes');
 const reservaRoutes = require('./routes/reservaRoutes');
 const errorHandler = require('./middleware/errorHandler');
+const cors = require('cors'); // Importar cors
 
 const app = express();
 
-// Middleware
+// Middleware 
+app.use(cors());
 app.use(express.json());
 app.use(helmet());
 
@@ -24,7 +26,7 @@ app.use('/usuarios', usuarioRoutes);
 app.use('/salas', salaRoutes);
 app.use('/reservas', reservaRoutes);
 
-// Manejo de errores
+// Manejo de errores 
 app.use(errorHandler);
 
 // Iniciar el servidor
